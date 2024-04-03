@@ -1,0 +1,20 @@
+---
+
+- name: Create temporary build dir
+  file:
+    path: "{{ builds_root }}"
+    state: directory
+
+- name: Create live and config
+  command:
+    cmd: lb config
+    chdir: "{{ builds_root }}"
+    creates: "{{ builds_root }}/config"
+
+- name: Run lb build
+  command:
+    cmd: lb build
+    chdir: "{{ builds_root }}"
+#    creates: "{{ builds_root }}/config"
+  become: true
+  become_method: sudo

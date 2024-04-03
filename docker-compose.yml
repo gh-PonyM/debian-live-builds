@@ -1,0 +1,13 @@
+---
+version: "3.8"
+
+services:
+  builder:
+    image: debian_builder:latest
+    build:
+      context: .
+    user: "1000"
+    tty: true
+    privileged: true
+    volumes:
+      - $PWD:/build

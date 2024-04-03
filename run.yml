@@ -1,0 +1,10 @@
+---
+
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    builds_root: "{{ lookup('env', 'BUILDS_ROOT') | default('.tmp') }}"
+  tasks:
+    - import_tasks: tasks/build.yml
+      tags: build

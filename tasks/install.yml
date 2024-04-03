@@ -1,0 +1,8 @@
+---
+- name: Install deps
+  apt:
+    name:
+      - live-build
+      - debootstrap
+    state: present
+  become: true
